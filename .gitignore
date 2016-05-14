@@ -5,3 +5,5 @@ src/app/**/*.js.map
 .idea/
 bower_components/
 semantic/
+public/css/
+public/js/

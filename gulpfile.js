@@ -28,14 +28,26 @@ gulp.task('sass',function(){
         .pipe(autoPrefixer())
         .pipe(concat('app.min.css'))
         .pipe(gulp.dest('public/css'))
-        .pipe(rename({
-            suffix: '.min'
-        }))
         .pipe(cleanCss())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('public/css'))
         .pipe(reload({stream:true}))
         .pipe(notify('css task finished'))
+});
+gulp.task('cssBower',function(){
+    gulp.src([
+        'semantic/dist/semantic.min.css'
+    ])
+        .pipe(plumber({
+            handleError: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+        .pipe(concat('bower.min.css'))
+        .pipe(gulp.dest('public/css'))
+        .pipe(reload({stream:true}))
+        .pipe(notify('css bower task finished'))
 });
 gulp.task('js',function(){
     gulp.src(['app/js/**/*.js'])
@@ -46,14 +58,29 @@ gulp.task('js',function(){
             }
         }))
         .pipe(concat('app.min.js'))
-        .pipe(gulp.dest('public/js'))
-        .pipe(rename({
-            suffix: '.min'
-        }))
         .pipe(uglify())
         .pipe(gulp.dest('public/js'))
-        .pipe(reload())
         .pipe(notify('js task finished'))
+});
+gulp.task('jsBower',function(){
+    gulp.src([
+        'bower_components/jquery/dist/jquery.min.js',
+        'semantic/dist/semantic.min.js',
+        'bower_components/angular/angular.min.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+        'bower_components/angularfire/dist/angularfire.min.js',
+        'bower_components/firebase/firebase.js',
+        'bower_components/lodash/lodash.min.js'
+    ])
+        .pipe(plumber({
+            handleError: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+        .pipe(concat('bower.min.js'))
+        .pipe(gulp.dest('public/js'))
+        .pipe(notify('js bower task finished'))
 });
 gulp.task('html',function(){
     gulp.src(['app/html/**/*.html'])
@@ -65,7 +92,6 @@ gulp.task('html',function(){
         }))
         .pipe(minifyHtml())
         .pipe(gulp.dest('public/html'))
-        .pipe(reload())
         .pipe(notify('html task finished'))
 });
 gulp.task('image',function(){
@@ -78,10 +104,9 @@ gulp.task('image',function(){
         }))
         .pipe(cache(imageMin()))
         .pipe(gulp.dest('public/css/images'))
-        .pipe(reload())
         .pipe(notify('image task finished'))
 });
-gulp.task('default',function(){
+gulp.task('watch',function(){
     browserSync.init({
         server: "public"
     });
@@ -90,3 +115,4 @@ gulp.task('default',function(){
     gulp.watch('app/html/**/*.html',['html']);
     gulp.watch('app/css/images/**/*',['image']);
 });
+gulp.task('default',['cssBower','sass','jsBower','js','html','image','watch']);
