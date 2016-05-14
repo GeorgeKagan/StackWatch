@@ -22,7 +22,8 @@ angular.module('stackWatch').factory('Chart', Tech => {
                     formatter: function() {
                         return `${Highcharts.numberFormat(this.y, 0)} job listings`;
                     }
-                }
+                },
+                lang: {noData: "No data collected yet"}
             },
             //The below properties are watched separately for changes.
             series: Tech.getTechData(),
@@ -41,7 +42,7 @@ angular.module('stackWatch').factory('Chart', Tech => {
                 }
             },
             yAxis: {
-                title: {text: 'Job Listings'}
+                title: {text: null}
             },
             plotOptions: {
                 column: {

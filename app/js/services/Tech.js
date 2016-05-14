@@ -23,7 +23,7 @@ angular.module('stackWatch').factory('Tech', FilterState => {
     };
 
     tech.getTechList = () => {
-        return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3'];
+        return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3', 'Java', 'Python', 'Ruby', 'Perl', 'C#', 'C++', 'C', 'Swift', 'Objective-C']; 
     };
 
     tech.getLogo = name => {
