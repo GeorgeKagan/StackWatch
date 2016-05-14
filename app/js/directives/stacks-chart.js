@@ -34,7 +34,15 @@ angular.module('stackWatch').directive('stacksChart', Tech => {
                    text: ''
                },
                xAxis: {
-                   labels: {enabled: false}
+                   type: 'category',
+                   labels: {
+                       x: 0,
+                       y: 25,
+                       useHTML: true,
+                       formatter: function () {
+                           return `<img width="50" height="50" src="${Tech.getLogo(this.value)}">`;
+                       }
+                   }
                },
                yAxis: {
                    title: {text: 'Job Listings'}

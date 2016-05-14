@@ -1,27 +1,30 @@
 angular.module('stackWatch').factory('Tech', () => {
-    let tech = {};
+    let tech = {},
+        name2logo = {
+            PHP: 'css/images/tech/php.png',
+            CSS3: 'css/images/tech/css3.png',
+            HTML5: 'css/images/tech/html5.png',
+            JavaScript: 'css/images/tech/javascript.png'
+        };
 
     tech.getTechList = () => {
         return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3'];
     };
 
+    tech.getLogo = name => {
+        return name2logo[name];
+    };
+
     tech.getTechData = () => {
         return [{
-            name: 'PHP',
-            data: [5],
-            color: '#ddb641'
-        }, {
-            name: 'JavaScript',
-            data: [3],
-            color: '#5a3e30'
-        }, {
-            name: 'HTML5',
-            data: [2],
-            color: '#6aae87'
-        }, {
-            name: 'CSS3',
-            data: [3],
-            color: '#da5e18'
+            showInLegend: false,
+            name: null,
+            data: [
+                {name: 'PHP', y: 23.7, color: '#6082bb'},
+                {name: 'JavaScript', y: 16.1, color: '#e5a228'},
+                {name: 'HTML5', y: 14.2, color: '#f16529'},
+                {name: 'CSS3', y: 14.0, color: '#0170ba'}
+            ]
         }];
     };
 
