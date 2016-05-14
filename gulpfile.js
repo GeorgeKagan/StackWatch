@@ -76,7 +76,7 @@ gulp.task('jsBower',function(){
         'bower_components/lodash/lodash.min.js',
         'bower_components/highcharts/highcharts.js',
         'bower_components/highcharts/highcharts-3d.js',
-        'bower_components/highcharts/themes/dark-unica.js',
+        // 'bower_components/highcharts/themes/dark-unica.js',
         'bower_components/highcharts-ng/dist/highcharts-ng.min.js',
     ])
         .pipe(plumber({
