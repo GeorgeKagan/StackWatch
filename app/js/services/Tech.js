@@ -2,7 +2,7 @@ angular.module('stackWatch').factory('Tech', () => {
     let tech = {};
 
     tech.getTechList = () => {
-        return ['PHP', 'JavaScript', 'HTML5', 'CSS3'];
+        return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3'];
     };
 
     tech.getTechData = () => {

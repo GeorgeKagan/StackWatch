@@ -4,10 +4,10 @@
     </div>
     <div class="ui container">
         <h2>See which technologies are most popular</h2>
-        <filters></filters>
+        <filters can-show-chart="canShowChart"></filters>
     </div>
 </div>
-<div class="ui vertical stripe segment">
+<div class="ui vertical stripe segment" ng-if="canShowChart()">
     <div class="ui middle aligned stackable grid container">
         <div class="row">
             <div class="sixteen wide column">
