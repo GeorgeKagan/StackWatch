@@ -1,5 +1,6 @@
 angular.module('stackWatch', [
-    'ui.router'
+    'ui.router',
+    'highcharts-ng'
 ]).config(($stateProvider, $urlRouterProvider) => {
     $urlRouterProvider.otherwise("/");
     $stateProvider

@@ -72,7 +72,11 @@ gulp.task('jsBower',function(){
         'bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'bower_components/angularfire/dist/angularfire.min.js',
         'bower_components/firebase/firebase.js',
-        'bower_components/lodash/lodash.min.js'
+        'bower_components/lodash/lodash.min.js',
+        'bower_components/highcharts/highcharts.js',
+        'bower_components/highcharts/highcharts-3d.js',
+        'bower_components/highcharts/themes/dark-unica.js',
+        'bower_components/highcharts-ng/dist/highcharts-ng.min.js',
     ])
         .pipe(plumber({
             handleError: function (err) {
