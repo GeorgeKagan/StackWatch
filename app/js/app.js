@@ -1,5 +1,6 @@
 angular.module('stackWatch', [
     'ngAnimate',
+    'anim-in-out',
     'ui.router',
     'highcharts-ng'
 ]).config(($stateProvider, $urlRouterProvider) => {

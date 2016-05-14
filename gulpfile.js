@@ -36,7 +36,8 @@ gulp.task('sass',function(){
 });
 gulp.task('cssBower',function(){
     gulp.src([
-        'semantic/dist/semantic.min.css'
+        'semantic/dist/semantic.min.css',
+        'bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css',
     ])
         .pipe(plumber({
             handleError: function (err) {
@@ -84,6 +85,7 @@ gulp.task('jsBower',function(){
         'bower_components/angular/angular.min.js',
         'bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'bower_components/angular-animate/angular-animate.min.js',
+        'bower_components/angular-ui-router-anim-in-out/anim-in-out.js',
         'bower_components/angularfire/dist/angularfire.min.js',
         'bower_components/firebase/firebase.js',
         'bower_components/lodash/lodash.min.js',
