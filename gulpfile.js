@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var babel = require("gulp-babel");
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 var plumber = require('gulp-plumber');
@@ -56,7 +57,10 @@ gulp.task('js',function(){
                 this.emit('end');
             }
         }))
+        .pipe(sourcemaps.init())
+        .pipe(babel())
         .pipe(concat('app.min.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('public/js'))
         .pipe(notify('js task finished'))
 });
