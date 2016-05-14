@@ -15,5 +15,10 @@ angular.module('stackWatch', [
             url: '/learningPath',
             templateUrl: 'html/states/learningPath.html'
         })
+        .state('crawler', {
+            url: '/crawler',
+            templateUrl: 'html/states/crawler.html',
+            controller: 'CrawlerCtrl as crawler'
+        })
     ;
 });
