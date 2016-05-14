@@ -5,7 +5,8 @@ angular.module('stackWatch').directive('topMenu', () => {
                 <a ui-sref="home">
                     <div class="logo"></div>    
                 </a>
-                <a class="active item">Home</a>
+                <a class="item" ui-sref="home" ui-sref-active="active">Home</a>
+                <a class="item" ui-sref="learningPath" ui-sref-active="active">Learning Path</a>
             </div>
         `,
         replace: true,

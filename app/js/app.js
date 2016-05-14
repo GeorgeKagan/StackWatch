@@ -10,5 +10,9 @@ angular.module('stackWatch', [
             url: '/',
             templateUrl: 'html/states/home.html'
         })
+        .state('learningPath', {
+            url: '/learningPath',
+            templateUrl: 'html/states/learningPath.html'
+        })
     ;
 });

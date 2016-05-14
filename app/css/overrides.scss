@@ -11,3 +11,9 @@
 .ui.inverted.segment {
   padding-bottom: 4em;
 }
+
+[ui-view] {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
