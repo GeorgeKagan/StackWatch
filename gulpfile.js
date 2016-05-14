@@ -16,7 +16,7 @@ var imageMin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var notify = require('gulp-notify');
 gulp.task('sass',function(){
-    gulp.src(['app/css/**/*.sass'])
+    gulp.src(['app/css/**/*.scss'])
         .pipe(plumber({
             handleError: function (err) {
                 console.log(err);
@@ -113,7 +113,7 @@ gulp.task('watch',function(){
         server: "public"
     });
     gulp.watch('app/js/**/*.js',['js']);
-    gulp.watch('app/css/**/*.sass',['sass']);
+    gulp.watch('app/css/**/*.scss',['sass']);
     gulp.watch('app/html/**/*.html',['html']);
     gulp.watch('app/css/images/**/*',['image']);
 });
