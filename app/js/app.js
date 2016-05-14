@@ -6,7 +6,7 @@ angular.module('stackWatch', [
     $urlRouterProvider.otherwise('/');
     $stateProvider
         .state('home', {
-            url: '',
+            url: '/',
             templateUrl: 'html/states/home.html'
         })
     ;

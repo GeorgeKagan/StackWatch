@@ -49,6 +49,19 @@ gulp.task('cssBower',function(){
         .pipe(reload({stream:true}))
         .pipe(notify('css bower task finished'))
 });
+gulp.task('copyBowerAssets',function(){
+    gulp.src([
+        'semantic/dist/themes/default/assets/**/*'
+    ])
+        .pipe(plumber({
+            handleError: function (err) {
+                console.log(err);
+                this.emit('end');
+            }
+        }))
+        .pipe(gulp.dest('public/css/themes/default/assets'))
+        .pipe(notify('copy bower assets task finished'))
+});
 gulp.task('js',function(){
     gulp.src(['app/js/**/*.js'])
         .pipe(plumber({
@@ -122,4 +135,4 @@ gulp.task('watch',function(){
     gulp.watch('app/html/**/*.html',['html']);
     gulp.watch('app/css/images/**/*',['image']);
 });
-gulp.task('default',['cssBower','sass','jsBower','js','html','image','watch']);
+gulp.task('default',['cssBower','copyBowerAssets','sass','jsBower','js','html','image','watch']);
