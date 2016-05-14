@@ -26,8 +26,8 @@ angular.module('stackWatch').directive('filters', (Tech, Provider) => {
         controllerAs: 'filters',
         controller: function() {
             this.countries = Provider.getCountryList();
-            this.providers = Provider.getList();
-            this.techs = Tech.getList();
+            this.providers = Provider.getProviderList();
+            this.techs = Tech.getTechList();
         }
     }
 });

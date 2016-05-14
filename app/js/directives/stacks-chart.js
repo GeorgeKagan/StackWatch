@@ -12,10 +12,9 @@ angular.module('stackWatch').directive('stacksChart', Tech => {
                        type: 'column',
                        options3d: {
                            enabled: true,
-                           alpha: 15,
-                           beta: 15,
-                           viewDistance: 25,
-                           depth: 40
+                           alpha: 10,
+                           beta: 25,
+                           depth: 70
                        },
                        backgroundColor: null
                    },
@@ -23,6 +22,9 @@ angular.module('stackWatch').directive('stacksChart', Tech => {
                        style: {
                            padding: 10,
                            fontWeight: 'bold'
+                       },
+                       formatter: function() {
+                           return `${Highcharts.numberFormat(this.y, 0)} job listings`;
                        }
                    }
                },
@@ -32,11 +34,15 @@ angular.module('stackWatch').directive('stacksChart', Tech => {
                    text: ''
                },
                xAxis: {
-                   categories: Tech.getList(),
-                   title: {text: 'Technologies'}
+                   labels: {enabled: false}
                },
                yAxis: {
-                   title: {text: 'Demand'}
+                   title: {text: 'Job Listings'}
+               },
+               plotOptions: {
+                   column: {
+                       depth: 25
+                   }
                },
                func: chart => {
 
