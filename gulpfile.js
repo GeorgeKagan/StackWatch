@@ -70,6 +70,7 @@ gulp.task('jsBower',function(){
         'semantic/dist/semantic.min.js',
         'bower_components/angular/angular.min.js',
         'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+        'bower_components/angular-animate/angular-animate.min.js',
         'bower_components/angularfire/dist/angularfire.min.js',
         'bower_components/firebase/firebase.js',
         'bower_components/lodash/lodash.min.js',
