@@ -1,4 +1,4 @@
-angular.module('stackWatch').directive('filters', (Tech, Provider) => {
+angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, Provider, FilterState) => {
     return {
         template: `
             <div>
@@ -35,28 +35,25 @@ angular.module('stackWatch').directive('filters', (Tech, Provider) => {
         bindToController: true,
         controllerAs: 'filters',
         controller: function() {
-            this.countries = Provider.getCountryList();
-            this.providers = Provider.getProviderList();
-            this.techs = Tech.getTechList();
-            this.filterState = {};
+            this.countries   = Provider.getCountryList();
+            this.providers   = Provider.getProviderList();
+            this.techs       = Tech.getTechList();
+            this.filterState = FilterState.getState();
 
             this.selectCountry = country => {
-                this.filterState.country = country;
+                FilterState.setCountry(country);
+                $timeout(() => $rootScope.$broadcast('updateChart'));
             };
-
             this.selectProvider = provider => {
-                this.filterState.provider = provider;
+                FilterState.setProvider(provider);
+                $timeout(() => $rootScope.$broadcast('updateChart'));
             };
-
             this.selectTech = tech => {
-                this.filterState.tech = tech;
+                FilterState.setTech(tech);
+                $timeout(() => $rootScope.$broadcast('updateChart'));
             };
 
-            this.getFilterState = () => this.filterState;
-
-            this.canShowChart = () => {
-                return Object.keys(this.filterState).length === 3;
-            };
+            this.canShowChart = () => FilterState.canShowChart();
         }
     }
 });

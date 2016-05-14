@@ -8,7 +8,8 @@ angular.module('stackWatch', [
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'html/states/home.html'
+            templateUrl: 'html/states/home.html',
+            controller: 'HomeCtrl as home'
         })
         .state('learningPath', {
             url: '/learningPath',
