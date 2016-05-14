@@ -1,0 +1,26 @@
+{
+  "name": "StackWatch",
+  "version": "1.0.0",
+  "description": "",
+  "author": "George Kagan",
+  "url": "",
+  "license": "MIT License",
+  "keywords": "",
+  "devDependencies":{
+    "gulp": "*",
+    "gulp-plumber": "*",
+    "gulp-rename": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-sass": "*",
+    "gulp-autoprefixer": "*",
+    "es6-promise": "*",
+    "gulp-clean-css": "*",
+    "gulp-uglify": "*",
+    "gulp-concat": "*",
+    "gulp-minify-html": "*",
+    "gulp-imagemin": "*",
+    "gulp-cache": "*",
+    "browser-sync": "*",
+    "gulp-notify": "*"
+  }
+}
