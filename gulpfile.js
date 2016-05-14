@@ -38,6 +38,7 @@ gulp.task('cssBower',function(){
     gulp.src([
         'semantic/dist/semantic.min.css',
         'bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css',
+        'bower_components/angular-animate-css/build/nga.min.css'
     ])
         .pipe(plumber({
             handleError: function (err) {

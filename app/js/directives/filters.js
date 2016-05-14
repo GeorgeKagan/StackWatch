@@ -9,7 +9,7 @@ angular.module('stackWatch').directive('filters', (Tech, Provider) => {
                 </button> 
             </div>
     
-            <div ng-if="filters.filterState.country">
+            <div class="nga-default nga-stagger nga-rotate-down" ng-if="filters.filterState.country">
                 <div class="ui divider"></div>
                 <button class="ui inverted button"
                         ng-repeat="provider in ::filters.providers" ng-click="filters.selectProvider(provider)"
@@ -19,7 +19,7 @@ angular.module('stackWatch').directive('filters', (Tech, Provider) => {
                 <button class="ui inverted basic button disabled">More job sites coming soon...</button>
             </div>
     
-            <div ng-if="filters.filterState.provider">
+            <div class="nga-default nga-stagger nga-squash-left" ng-if="filters.filterState.provider">
                 <div class="ui divider"></div>
                 <button class="ui inverted button" 
                         ng-repeat="tech in ::filters.techs" ng-click="filters.selectTech(tech)"
