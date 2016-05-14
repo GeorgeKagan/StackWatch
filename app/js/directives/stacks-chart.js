@@ -1,4 +1,4 @@
-angular.module('stackWatch').directive('stacksChart', () => {
+angular.module('stackWatch').directive('stacksChart', Tech => {
    return {
        template: `<highchart config="sCharts.chartConfig"></highchart>`,
        restrict: 'E',
@@ -27,28 +27,12 @@ angular.module('stackWatch').directive('stacksChart', () => {
                    }
                },
                //The below properties are watched separately for changes.
-               series: [{
-                   name: 'PHP',
-                   data: [5],
-                   color: '#ddb641'
-               }, {
-                   name: 'JavaScript',
-                   data: [3],
-                   color: '#5a3e30'
-               }, {
-                   name: 'HTML5',
-                   data: [2],
-                   color: '#6aae87'
-               }, {
-                   name: 'CSS3',
-                   data: [3],
-                   color: '#da5e18'
-               }],
+               series: Tech.getTechData(),
                title: {
                    text: ''
                },
                xAxis: {
-                   categories: ['PHP', 'JavaScript', 'HTML5', 'CSS3'],
+                   categories: Tech.getList(),
                    title: {text: 'Technologies'}
                },
                yAxis: {

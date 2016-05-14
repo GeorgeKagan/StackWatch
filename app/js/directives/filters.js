@@ -1,25 +1,23 @@
-angular.module('stackWatch').directive('filters', () => {
+angular.module('stackWatch').directive('filters', (Tech, Provider) => {
     return {
         template: `
             <div>
-                <button class="ui inverted button active"><i class="united states flag"></i> USA</button>
-                <button class="ui inverted basic button disabled"><i class="israel flag"></i> Israel (coming soon...)</button>
+                <button class="ui inverted button" ng-repeat="country in ::filters.countries" ng-disabled="country.disabled">
+                    <i class="{{::country.flag}} flag"></i> {{::country.name}}
+                </button>
             </div>
     
             <div class="ui divider"></div>
     
             <div>
-                <button class="ui inverted button active">Indeed</button>
+                <button class="ui inverted button" ng-repeat="provider in ::filters.providers">{{::provider}}</button>
                 <button class="ui inverted basic button disabled">More job sites coming soon...</button>
             </div>
     
             <div class="ui divider"></div>
     
             <div>
-                <button class="ui inverted button active">PHP</button>
-                <button class="ui inverted button">JavaScript</button>
-                <button class="ui inverted button">HTML5</button>
-                <button class="ui inverted button">CSS3</button>
+                <button class="ui inverted button" ng-repeat="tech in ::filters.techs">{{::tech}}</button>
             </div>
         `,
         restrict: 'E',
@@ -27,7 +25,9 @@ angular.module('stackWatch').directive('filters', () => {
         bindToController: true,
         controllerAs: 'filters',
         controller: function() {
-
+            this.countries = Provider.getCountryList();
+            this.providers = Provider.getList();
+            this.techs = Tech.getList();
         }
     }
 });
