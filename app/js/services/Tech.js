@@ -1,4 +1,4 @@
-angular.module('stackWatch').factory('Tech', (MyFirebase, FilterState) => {
+angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState) => {
     const TECH_ALL = 'All';
 
     let tech = {},
@@ -20,24 +20,6 @@ angular.module('stackWatch').factory('Tech', (MyFirebase, FilterState) => {
         },
         techData = [];
 
-    let getData = () => {
-        let data        = [],
-            filterState = FilterState.getState(),
-            techList    = filterState.tech === TECH_ALL ? tech.getTechList() : [filterState.tech];
-
-        _.each(techList, tech => {
-            let rawData     = techData[filterState.provider][tech],
-                jobListings = 0;
-
-            _.each(rawData, item => {
-                jobListings += item.numJobs;
-            });
-            jobListings && data.push({name: tech, y: jobListings, color: name2color[tech]})
-        });
-
-        return data;
-    };
-
     tech.getTechList = () => {
         return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3', 'Java', 'Python', 'Ruby', 'Perl', 'C#', 'C++', 'C', 'Swift', 'Objective-C']; 
     };
@@ -51,10 +33,15 @@ angular.module('stackWatch').factory('Tech', (MyFirebase, FilterState) => {
     };
 
     tech.getTechData = () => {
+        let filterState = FilterState.getState(),
+            techList    = filterState.tech === TECH_ALL ? tech.getTechList().splice(1) : [filterState.tech],
+            provider    = $injector.get(filterState.provider),
+            data        = provider.parseRawData(techData, techList, name2color);
+
         return [{
             showInLegend: false,
             name: null,
-            data: getData()
+            data: data
         }];
     };
 

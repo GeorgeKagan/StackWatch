@@ -27,5 +27,22 @@ angular.module('stackWatch').factory('Glassdoor', ($http, $q, Tech, MyFirebase) 
         }
     };
 
+    glassdoor.parseRawData = (techData, techList, name2color) => {
+        let data = [];
+
+        _.each(techList, tech => {
+            let rawData     = techData['Glassdoor'][tech],
+                jobListings = 0;
+
+            _.each(rawData, item => {
+                //todo: filter results to count only relveant ones
+                jobListings += item.numJobs;
+            });
+            jobListings && data.push({name: tech, y: jobListings, color: name2color[tech]})
+        });
+
+        return data;
+    };
+
     return glassdoor;
 });
