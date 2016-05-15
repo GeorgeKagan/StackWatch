@@ -12,7 +12,10 @@ angular.module('stackWatch', [
             templateUrl: 'html/states/home.html',
             controller: 'HomeCtrl as home',
             resolve: {
-                techData: Tech => Tech.fetchTechData()
+                techData: ($rootScope, Tech) => {
+                    $rootScope.stateIsLoading = true;
+                    Tech.fetchTechData().then(() => $rootScope.stateIsLoading = false);
+                }
             }
         })
         .state('learningPath', {

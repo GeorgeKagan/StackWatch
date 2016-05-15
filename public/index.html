@@ -11,7 +11,12 @@
 </head>
 <body>
     <div class="pusher">
-        <div ui-view class="anim-in-out anim-zoom-in anim-fade" data-anim-sync="false" data-anim-in-speed="1200" data-anim-speed="400"></div>
+        <div ui-view class="anim-in-out anim-zoom-in anim-fade" data-anim-sync="false" data-anim-in-speed="1200" data-anim-speed="400" ng-if="!stateIsLoading"></div>
+        <div class="ui container" ng-if="stateIsLoading">
+            <div class="ui active inverted dimmer">
+                <div class="ui large text loader">Loading</div>
+            </div>
+        </div>
     </div>
     <script src="js/bower.min.js"></script>
     <script src="js/app.min.js"></script>
