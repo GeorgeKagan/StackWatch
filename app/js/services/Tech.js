@@ -6,7 +6,11 @@ angular.module('stackWatch').factory('Tech', (MyFirebase, FilterState) => {
             PHP: 'css/images/tech/php.png',
             CSS3: 'css/images/tech/css3.png',
             HTML5: 'css/images/tech/html5.png',
-            JavaScript: 'css/images/tech/javascript.png'
+            JavaScript: 'css/images/tech/javascript.png',
+            'Objective-C': 'css/images/tech/objective-c.png',
+            Swift: 'css/images/tech/swift.png',
+            Ruby: 'css/images/tech/ruby.png',
+            Perl: 'css/images/tech/perl.png',
         },
         name2color = {
             PHP: '#6082bb',

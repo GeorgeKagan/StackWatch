@@ -32,7 +32,7 @@ gulp.task('sass',function(){
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('public/css'))
         .pipe(reload({stream:true}))
-        .pipe(notify('css task finished'))
+        // .pipe(notify('css task finished'))
 });
 gulp.task('cssBower',function(){
     gulp.src([
@@ -49,7 +49,7 @@ gulp.task('cssBower',function(){
         .pipe(concat('bower.min.css'))
         .pipe(gulp.dest('public/css'))
         .pipe(reload({stream:true}))
-        .pipe(notify('css bower task finished'))
+        // .pipe(notify('css bower task finished'))
 });
 gulp.task('copyBowerAssets',function(){
     gulp.src([
@@ -62,7 +62,7 @@ gulp.task('copyBowerAssets',function(){
             }
         }))
         .pipe(gulp.dest('public/css/themes/default/assets'))
-        .pipe(notify('copy bower assets task finished'))
+        // .pipe(notify('copy bower assets task finished'))
 });
 gulp.task('js',function(){
     gulp.src(['app/js/**/*.js'])
@@ -77,7 +77,7 @@ gulp.task('js',function(){
         .pipe(concat('app.min.js'))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('public/js'))
-        .pipe(notify('js task finished'))
+        // .pipe(notify('js task finished'))
 });
 gulp.task('jsBower',function(){
     gulp.src([
@@ -104,7 +104,7 @@ gulp.task('jsBower',function(){
         }))
         .pipe(concat('bower.min.js'))
         .pipe(gulp.dest('public/js'))
-        .pipe(notify('js bower task finished'))
+        // .pipe(notify('js bower task finished'))
 });
 gulp.task('html',function(){
     gulp.src(['app/html/**/*.html'])
@@ -116,7 +116,7 @@ gulp.task('html',function(){
         }))
         .pipe(minifyHtml())
         .pipe(gulp.dest('public/html'))
-        .pipe(notify('html task finished'))
+        // .pipe(notify('html task finished'))
 });
 gulp.task('image',function(){
     gulp.src(['app/css/images/**/*'])
@@ -128,7 +128,7 @@ gulp.task('image',function(){
         }))
         .pipe(cache(imageMin()))
         .pipe(gulp.dest('public/css/images'))
-        .pipe(notify('image task finished'))
+        // .pipe(notify('image task finished'))
 });
 gulp.task('watch',function(){
     browserSync.init({
