@@ -1,5 +1,5 @@
 angular.module('stackWatch').factory('Glassdoor', ($http, $q, Tech, MyFirebase) => {
-    const API_URL      = `https://api.glassdoor.com/api/api.htm?t.p=66461&t.k=OuQ7fvdsiM&format=json&v=1&action=jobs-stats&returnJobTitles=true&callback=JSON_CALLBACK`;
+    const API_URL      = `https://api.glassdoor.com/api/api.htm?t.p=66461&t.k=OuQ7fvdsiM&format=json&v=1&action=jobs-stats&returnJobTitles=true&jc=29&callback=JSON_CALLBACK`;
     const FIREBASE_KEY = 'Glassdoor';
 
     let glassdoor = {},
