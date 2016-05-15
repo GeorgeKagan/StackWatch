@@ -1,4 +1,4 @@
-angular.module('stackWatch').factory('Glassdoor', ($http, $q, Tech, MyFirebase) => {
+angular.module('stackWatch').factory('Glassdoor', ($http, $q, $log, Tech, MyFirebase) => {
     const API_URL      = `http://api.glassdoor.com/api/api.htm?t.p=66479&t.k=gPkUAiDFPWa&format=json&v=1&action=jobs-stats&returnJobTitles=true&jc=29&callback=JSON_CALLBACK`;
     const FIREBASE_KEY = 'Glassdoor';
 
@@ -38,9 +38,16 @@ angular.module('stackWatch').factory('Glassdoor', ($http, $q, Tech, MyFirebase) 
                 jobListings = 0;
 
             _.each(rawData, item => {
-                //todo: filter results to count only relveant ones
-                jobListings += item.numJobs;
+                let str   = RegExp.escape(decodeURIComponent(tech)),
+                    regex = new RegExp('(^|[\\s\\/()])(' + str + ')([\\s\\/()]|$)', 'ig'),
+                    match = item.jobTitle.match(regex);
+
+                if (match) {
+                    $log.info('Matched', item);
+                    jobListings += item.numJobs;
+                }
             });
+            $log.info('---------------------------');
             jobListings && data.push({name: tech, y: jobListings, color: name2color[tech]})
         });
 

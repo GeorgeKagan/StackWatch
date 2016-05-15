@@ -7,7 +7,7 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
             CSS3: 'css/images/tech/CSS3.png',
             HTML5: 'css/images/tech/html5.png',
             JavaScript: 'css/images/tech/javascript.png',
-            'Objective-C': 'css/images/tech/objective-c.png',
+            iOS: 'css/images/tech/objective-c.png',
             Swift: 'css/images/tech/swift.png',
             Ruby: 'css/images/tech/ruby.png',
             Perl: 'css/images/tech/perl.png',
@@ -30,12 +30,12 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
             Ruby: '#d84a35',
             Perl: '#b2d0f0',
             Swift: '#fa7547',
-            'Objective-C': '#848484'
+            iOS: '#848484'
         },
         techData = [];
 
     tech.getTechList = () => {
-        return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3', 'Java', 'Python', 'Ruby', 'Perl', 'C#', 'C++', 'C', 'Swift', 'Objective-C'];
+        return ['All', 'PHP', 'JavaScript', 'Java', 'Python', 'Ruby', 'Perl', 'C#', 'C++', 'iOS'];
     };
 
     tech.getLogo = name => {
