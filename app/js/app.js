@@ -2,7 +2,8 @@ angular.module('stackWatch', [
     'ngAnimate',
     'anim-in-out',
     'ui.router',
-    'highcharts-ng'
+    'highcharts-ng',
+    'firebase'
 ]).config(($stateProvider, $urlRouterProvider) => {
     $urlRouterProvider.otherwise('/');
     $stateProvider
