@@ -9,6 +9,10 @@ angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, P
                 </button> 
             </div>
     
+            <div class="nga-default nga-squash-vertical" ng-if="!filters.filterState.country">
+                <div class="ui divider"></div>
+                Select a country to continue...
+            </div>
             <div class="nga-default nga-stagger nga-rotate-down" ng-if="filters.filterState.country">
                 <div class="ui divider"></div>
                 <button class="ui inverted button"
@@ -19,6 +23,10 @@ angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, P
                 <button class="ui inverted basic button disabled">More job sites coming soon...</button>
             </div>
     
+            <div class="nga-default nga-squash-vertical" ng-if="filters.filterState.country && !filters.filterState.provider">
+                <div class="ui divider"></div>
+                Select a jobs site to continue...
+            </div>
             <div class="nga-default nga-stagger nga-squash-left" ng-if="filters.filterState.provider">
                 <div class="ui divider"></div>
                 <button class="ui inverted button" 

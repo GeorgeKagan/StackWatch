@@ -14,13 +14,16 @@ angular.module('stackWatch').factory('Chart', Tech => {
                     },
                     backgroundColor: null
                 },
+                plotOptions: {
+                    column: {
+                        depth: 35,
+
+                    }
+                },
                 tooltip: {
-                    style: {
-                        padding: 10,
-                        fontWeight: 'bold'
-                    },
+                    useHTML: true,
                     formatter: function() {
-                        return `${Highcharts.numberFormat(this.y, 0)} job listings`;
+                        return `<div style="text-align:center">${this.key} <br> <strong>${Highcharts.numberFormat(this.y, 0, '.', ',')}</strong> job listings</div>`;
                     }
                 },
                 lang: {noData: "No data collected yet"}
@@ -37,16 +40,14 @@ angular.module('stackWatch').factory('Chart', Tech => {
                     y: 35,
                     useHTML: true,
                     formatter: function () {
-                        return `<img width="40" height="40" src="${Tech.getLogo(this.value)}">`;
+                        return `<img width="35" height="35" src="${Tech.getLogo(this.value)}">`;
                     }
                 }
             },
             yAxis: {
-                title: {text: null}
-            },
-            plotOptions: {
-                column: {
-                    depth: 25
+                title: {
+                    text: '# of job listings',
+                    rotation: -93
                 }
             },
             credits: {
