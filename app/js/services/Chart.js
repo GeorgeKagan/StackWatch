@@ -34,10 +34,10 @@ angular.module('stackWatch').factory('Chart', Tech => {
                 type: 'category',
                 labels: {
                     x: 0,
-                    y: 25,
+                    y: 35,
                     useHTML: true,
                     formatter: function () {
-                        return `<img width="50" height="50" src="${Tech.getLogo(this.value)}">`;
+                        return `<img width="40" height="40" src="${Tech.getLogo(this.value)}">`;
                     }
                 }
             },

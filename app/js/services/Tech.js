@@ -11,12 +11,26 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
             Swift: 'css/images/tech/swift.png',
             Ruby: 'css/images/tech/ruby.png',
             Perl: 'css/images/tech/perl.png',
+            Java: 'css/images/tech/java.png',
+            Python: 'css/images/tech/python.png',
+            'C': 'css/images/tech/c.png',
+            'C#': 'css/images/tech/c#.png',
+            'C++': 'css/images/tech/c++.png'
         },
         name2color = {
             PHP: '#6082bb',
             CSS3: '#0170ba',
             HTML5: '#f16529',
-            JavaScript: '#e5a228'
+            JavaScript: '#e5a228',
+            'C#': '#9c6fd7',
+            'C++': '#3d739c',
+            'C': '#a8b9cc',
+            Java: '#ea8733',
+            Python: '#ffcc3c',
+            Ruby: '#d84a35',
+            Perl: '#b2d0f0',
+            Swift: '#fa7547',
+            'Objective-C': '#848484'
         },
         techData = [];
 
@@ -25,7 +39,7 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
     };
 
     tech.getLogo = name => {
-        return name2logo[name];
+        return encodeURIComponent(name2logo[name]);
     };
 
     tech.fetchTechData = () => {

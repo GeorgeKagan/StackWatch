@@ -34,7 +34,7 @@ angular.module('stackWatch').factory('Glassdoor', ($http, $q, Tech, MyFirebase) 
         let data = [];
 
         _.each(techList, tech => {
-            let rawData     = techData['Glassdoor'][tech],
+            let rawData     = techData['Glassdoor'][encodeURIComponent(tech)],
                 jobListings = 0;
 
             _.each(rawData, item => {
