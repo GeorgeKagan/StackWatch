@@ -10,7 +10,10 @@ angular.module('stackWatch', [
         .state('home', {
             url: '/',
             templateUrl: 'html/states/home.html',
-            controller: 'HomeCtrl as home'
+            controller: 'HomeCtrl as home',
+            resolve: {
+                techData: Tech => Tech.fetchTechData()
+            }
         })
         .state('learningPath', {
             url: '/learningPath',

@@ -16,7 +16,7 @@ angular.module('stackWatch').factory('Provider', () => {
     }
 
     provider.getProviderList = () => {
-        return ['Indeed'];
+        return ['Glassdoor'];
     };
 
     return provider;

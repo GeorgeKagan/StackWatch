@@ -1,4 +1,4 @@
-angular.module('stackWatch').factory('Tech', FilterState => {
+angular.module('stackWatch').factory('Tech', (MyFirebase, FilterState) => {
     const TECH_ALL = 'All';
 
     let tech = {},
@@ -8,18 +8,30 @@ angular.module('stackWatch').factory('Tech', FilterState => {
             HTML5: 'css/images/tech/html5.png',
             JavaScript: 'css/images/tech/javascript.png'
         },
-        techData = [
-            {name: 'PHP', y: 23.7, color: '#6082bb'},
-            {name: 'JavaScript', y: 16.1, color: '#e5a228'},
-            {name: 'HTML5', y: 14.2, color: '#f16529'},
-            {name: 'CSS3', y: 14.0, color: '#0170ba'}
-        ];
+        name2color = {
+            PHP: '#6082bb',
+            CSS3: '#0170ba',
+            HTML5: '#f16529',
+            JavaScript: '#e5a228'
+        },
+        techData = [];
 
-    let getData = tech => {
-        if (tech === TECH_ALL) {
-            return techData;
-        }
-        return techData.filter(val => val.name === tech);
+    let getData = () => {
+        let data        = [],
+            filterState = FilterState.getState(),
+            techList    = filterState.tech === TECH_ALL ? tech.getTechList() : [filterState.tech];
+
+        _.each(techList, tech => {
+            let rawData     = techData[filterState.provider][tech],
+                jobListings = 0;
+
+            _.each(rawData, item => {
+                jobListings += item.numJobs;
+            });
+            jobListings && data.push({name: tech, y: jobListings, color: name2color[tech]})
+        });
+
+        return data;
     };
 
     tech.getTechList = () => {
@@ -30,12 +42,15 @@ angular.module('stackWatch').factory('Tech', FilterState => {
         return name2logo[name];
     };
 
+    tech.fetchTechData = () => {
+        return MyFirebase.getAll().then(data => techData = data);
+    };
+
     tech.getTechData = () => {
-        let filterState = FilterState.getState();
         return [{
             showInLegend: false,
             name: null,
-            data: getData(filterState.tech)
+            data: getData()
         }];
     };
 

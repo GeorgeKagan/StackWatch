@@ -4,6 +4,10 @@ angular.module('stackWatch').factory('MyFirebase', $firebaseObject => {
     let myFirebase = {},
         ref        = new Firebase(FIREBASE_URL);
 
+    myFirebase.getAll = () => {
+        return $firebaseObject(ref).$loaded();
+    };
+
     myFirebase.reset = key => {
         let obj = $firebaseObject(ref.child(key));
         return obj.$remove();
