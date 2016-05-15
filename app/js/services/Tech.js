@@ -4,7 +4,7 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
     let tech = {},
         name2logo = {
             PHP: 'css/images/tech/php.png',
-            CSS3: 'css/images/tech/css3.png',
+            CSS3: 'css/images/tech/CSS3.png',
             HTML5: 'css/images/tech/html5.png',
             JavaScript: 'css/images/tech/javascript.png',
             'Objective-C': 'css/images/tech/objective-c.png',
