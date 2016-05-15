@@ -9,9 +9,6 @@ angular.module('stackWatch').controller('CrawlerCtrl', function($injector, $log)
         let crawler = $injector.get(crawlerServiceName);
 
         $log.info(`[${crawlerServiceName}] Fetching from API...`)
-        crawler.fetchFromApi().then(() => {
-            $log.info(`[${crawlerServiceName}] Saving to Database...`)
-            crawler.saveToDatabase();
-        });
+        crawler.fetchFromApi();
     });
 });

@@ -1,19 +1,22 @@
 angular.module('stackWatch').factory('Glassdoor', ($http, $q, Tech, MyFirebase) => {
-    const API_URL      = `https://api.glassdoor.com/api/api.htm?t.p=66461&t.k=OuQ7fvdsiM&format=json&v=1&action=jobs-stats&returnJobTitles=true&jc=29&callback=JSON_CALLBACK`;
+    const API_URL      = `http://api.glassdoor.com/api/api.htm?t.p=66479&t.k=gPkUAiDFPWa&format=json&v=1&action=jobs-stats&returnJobTitles=true&jc=29&callback=JSON_CALLBACK`;
     const FIREBASE_KEY = 'Glassdoor';
 
     let glassdoor = {},
-        techList  = Tech.getTechList(),
-        techCount = techList.length,
-        data      = {};
+        techList  = Tech.getTechList().splice(1),
+        techCount = techList.length;
 
     glassdoor.fetchFromApi = () => {
         let q = $q.defer();
 
         _.each(techList, (tech, i) => {
-            $http.jsonp(`${API_URL}&q=${encodeURIComponent(tech)}`).then(({data: {response: {jobTitles: jobs}}}) => {
-                data[tech] = [];
-                _.each(jobs, ({jobTitle, numJobs}) => data[tech].push({jobTitle, numJobs}));
+            let url = `${API_URL}&q=${encodeURIComponent(tech)}`;
+
+            $http.jsonp(url).then(({data: {response: {jobTitles: jobs}}}) => {
+                let data = [];
+
+                _.each(jobs, ({jobTitle, numJobs}) => data.push({jobTitle, numJobs}));
+                glassdoor.saveToDatabase(tech, data);
                 techCount - 1 === i && q.resolve();
             });
         });
@@ -21,9 +24,9 @@ angular.module('stackWatch').factory('Glassdoor', ($http, $q, Tech, MyFirebase) 
         return q.promise;
     };
 
-    glassdoor.saveToDatabase = () => {
+    glassdoor.saveToDatabase = (techKey, data) => {
         if (!_.isEmpty(data)) {
-            MyFirebase.reset(FIREBASE_KEY).then(() => MyFirebase.save(FIREBASE_KEY, data));
+            MyFirebase.saveTechData(FIREBASE_KEY, techKey, data);
         }
     };
 

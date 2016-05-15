@@ -13,10 +13,9 @@ angular.module('stackWatch').factory('MyFirebase', $firebaseObject => {
         return obj.$remove();
     };
 
-    myFirebase.save = (key, data) => {
-        let obj = $firebaseObject(ref);
-        obj[key] = data;
-        return obj.$save();
+    myFirebase.saveTechData = (providerKey, techKey, data) => {
+        let obj = ref.child(providerKey).child(encodeURIComponent(techKey));
+        return obj.update(data);
     };
 
     return myFirebase;

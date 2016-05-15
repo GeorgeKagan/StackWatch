@@ -21,7 +21,7 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
         techData = [];
 
     tech.getTechList = () => {
-        return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3', 'Java', 'Python', 'Ruby', 'Perl', 'C#', 'C++', 'C', 'Swift', 'Objective-C']; 
+        return ['All', 'PHP', 'JavaScript', 'HTML5', 'CSS3', 'Java', 'Python', 'Ruby', 'Perl', 'C#', 'C++', 'C', 'Swift', 'Objective-C'];
     };
 
     tech.getLogo = name => {
