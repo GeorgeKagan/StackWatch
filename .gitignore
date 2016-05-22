@@ -8,3 +8,6 @@ semantic/
 public/css/
 public/js/
 public/html/
+StackWatchApp/platforms/
+StackWatchApp/www/
+StackWatchApp/plugins/
