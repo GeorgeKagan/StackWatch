@@ -3,19 +3,19 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
 
     let tech = {},
         name2logo = {
-            PHP: 'css/images/tech/php.png',
-            CSS3: 'css/images/tech/CSS3.png',
-            HTML5: 'css/images/tech/html5.png',
-            JavaScript: 'css/images/tech/javascript.png',
-            iOS: 'css/images/tech/objective-c.png',
-            Swift: 'css/images/tech/swift.png',
-            Ruby: 'css/images/tech/ruby.png',
-            Perl: 'css/images/tech/perl.png',
-            Java: 'css/images/tech/java.png',
-            Python: 'css/images/tech/python.png',
-            'C': 'css/images/tech/c.png',
-            'C#': 'css/images/tech/c#.png',
-            'C++': 'css/images/tech/c++.png'
+            PHP: 'php.png',
+            CSS3: 'CSS3.png',
+            HTML5: 'html5.png',
+            JavaScript: 'javascript.png',
+            iOS: 'objective-c.png',
+            Swift: 'swift.png',
+            Ruby: 'ruby.png',
+            Perl: 'perl.png',
+            Java: 'java.png',
+            Python: 'python.png',
+            'C': 'c.png',
+            'C#': 'csharp.png',
+            'C++': 'cpp.png'
         },
         name2color = {
             PHP: '#6082bb',
@@ -39,7 +39,7 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
     };
 
     tech.getLogo = name => {
-        return encodeURIComponent(name2logo[name]);
+        return `css/images/tech/${name2logo[name]}`;
     };
 
     tech.fetchTechData = () => {
