@@ -20,14 +20,14 @@ angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, P
                         ng-class="{'active': filters.filterState.provider===provider}">
                     {{::provider}}
                 </button>
-                <button class="ui inverted basic button disabled">More job sites coming soon...</button>
+                <button class="ui inverted basic button disabled">More coming soon...</button>
             </div>
     
             <div class="nga-default nga-squash-vertical" ng-if="filters.filterState.country && !filters.filterState.provider">
                 <div class="ui divider"></div>
                 Select a jobs site to continue...
             </div>
-            <div class="nga-default nga-stagger nga-squash-left" ng-if="filters.filterState.provider">
+            <div class="nga-default nga-stagger nga-rotate-down" ng-if="filters.filterState.provider">
                 <div class="ui divider"></div>
                 <button class="ui inverted button" 
                         ng-repeat="tech in ::filters.techs" ng-click="filters.selectTech(tech)"
