@@ -36,7 +36,7 @@ gulp.task('sass',function(){
 });
 gulp.task('cssBower',function(){
     gulp.src([
-        'semantic/dist/semantic.min.css',
+        'bower_components/semantic/dist/semantic.min.css',
         'bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css',
         'bower_components/angular-animate-css/build/nga.min.css'
     ])
@@ -53,7 +53,7 @@ gulp.task('cssBower',function(){
 });
 gulp.task('copyBowerAssets',function(){
     gulp.src([
-        'semantic/dist/themes/default/assets/**/*'
+        'bower_components/semantic/dist/themes/default/assets/**/*'
     ])
         .pipe(plumber({
             handleError: function (err) {
@@ -82,7 +82,7 @@ gulp.task('js',function(){
 gulp.task('jsBower',function(){
     gulp.src([
         'bower_components/jquery/dist/jquery.min.js',
-        'semantic/dist/semantic.min.js',
+        'bower_components/semantic/dist/semantic.min.js',
         'bower_components/angular/angular.min.js',
         'bower_components/angular-ui-router/release/angular-ui-router.min.js',
         'bower_components/angular-animate/angular-animate.min.js',
