@@ -1,4 +1,4 @@
-angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, Provider, FilterState) => {
+angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, Provider, FilterState, Dom) => {
     return {
         template: `
             <div>
@@ -58,7 +58,10 @@ angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, P
             };
             this.selectTech = tech => {
                 FilterState.setTech(tech);
-                $timeout(() => $rootScope.$broadcast('updateChart'));
+                $timeout(() => {
+                    $rootScope.$broadcast('updateChart');
+                    Dom.scrollToElem("#chart", 500);
+                });
             };
 
             this.canShowChart = () => FilterState.canShowChart();
