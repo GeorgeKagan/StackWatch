@@ -139,4 +139,10 @@ gulp.task('watch',function(){
     gulp.watch('app/html/**/*.html',['html']);
     gulp.watch('app/css/images/**/*',['image']);
 });
+gulp.task('copyWwwToCordova',function(){
+    gulp.src([
+        'public/**/*'
+    ])
+        .pipe(gulp.dest('StackWatchApp/www'))
+});
 gulp.task('default',['cssBower','copyBowerAssets','sass','jsBower','js','html','image','watch']);

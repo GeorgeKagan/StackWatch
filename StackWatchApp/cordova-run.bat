@@ -1,0 +1,1 @@
+gulp copyWwwToCordova & cordova run
