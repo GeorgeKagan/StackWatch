@@ -60,7 +60,7 @@ angular.module('stackWatch').directive('filters', ($rootScope, $timeout, Tech, P
                 FilterState.setTech(tech);
                 $timeout(() => {
                     $rootScope.$broadcast('updateChart');
-                    Dom.scrollToElem("#chart", 500);
+                    Dom.scrollToElem("#chart", 500, -10).then(() => $rootScope.$broadcast('showScrollToTop'));
                 });
             };
 
