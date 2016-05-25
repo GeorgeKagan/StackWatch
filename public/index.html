@@ -12,13 +12,14 @@
 </head>
 <body>
     <div class="pusher">
-        <div ui-view class="anim-fade anim-in-out" data-anim-sync="true" ng-if="!stateIsLoading"></div>
+        <div ui-view class="{{isCordova ? '' : 'anim-fade anim-in-out'}}" data-anim-sync="true" ng-if="!stateIsLoading"></div>
         <div class="ui container" ng-if="stateIsLoading">
             <div class="ui active inverted dimmer">
                 <div class="ui large text loader">Loading</div>
             </div>
         </div>
     </div>
+    <script src="cordova.js"></script>
     <script src="js/bower.min.js"></script>
     <script src="js/app.min.js"></script>
 </body>

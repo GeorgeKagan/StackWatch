@@ -28,4 +28,6 @@ angular.module('stackWatch', [
             controller: 'CrawlerCtrl as crawler'
         })
     ;
+}).run($rootScope => {
+    $rootScope.isCordova = isCordova();
 });
