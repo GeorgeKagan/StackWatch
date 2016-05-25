@@ -2,12 +2,11 @@ angular.module('stackWatch').directive('topMenu', () => {
     return {
         template: `
             <div class="ui large secondary inverted pointing menu">
-                <a ui-sref="home">
-                    <div class="logo"></div>    
+                <div class="logo"></div>    
+                <a class="toc item">
+                    <i class="sidebar icon large"></i>
                 </a>
-                <a class="item" ui-sref="home" ui-sref-active="active">Home</a>
-                <a class="item" ui-sref="learningPath" ui-sref-active="active">Learning Path</a>
-                <!--<a class="item" ui-sref="crawler" ui-sref-active="active">Crawler</a>-->
+                <top-menu-items include-replace></top-menu-items>
             </div>
         `,
         replace: true,
@@ -17,6 +16,15 @@ angular.module('stackWatch').directive('topMenu', () => {
         controllerAs: 'topMenu',
         controller: function() {
 
+        },
+        link: () => {
+            angular.element('.ui.sidebar')
+                .sidebar({
+                    scrollLock: true,
+                    returnScroll: false
+                })
+                .sidebar('attach events', '.toc.item')
+            ;
         }
     }
 });
