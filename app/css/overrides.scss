@@ -12,3 +12,9 @@ filters .ui.button {
   margin-right: 0.75em;
   margin-bottom: 0.75em;
 }
+
+[ui-view].pusher.anim-in-out {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
