@@ -1,4 +1,4 @@
-angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState) => {
+angular.module('stackWatch').factory('Tech', ($rootScope, $injector, MyFirebase, FilterState) => {
     const TECH_ALL = 'All';
 
     let tech = {},
@@ -57,6 +57,11 @@ angular.module('stackWatch').factory('Tech', ($injector, MyFirebase, FilterState
             name: null,
             data: data
         }];
+    };
+
+    tech.getTechDataForState = () => {
+        $rootScope.stateIsLoading = true;
+        return tech.fetchTechData().then(() => $rootScope.stateIsLoading = false);
     };
 
     return tech;

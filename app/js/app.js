@@ -11,16 +11,12 @@ angular.module('stackWatch', [
             url: '/',
             templateUrl: 'html/states/home.html',
             controller: 'HomeCtrl as home',
-            resolve: {
-                techData: ($rootScope, Tech) => {
-                    $rootScope.stateIsLoading = true;
-                    Tech.fetchTechData().then(() => $rootScope.stateIsLoading = false);
-                }
-            }
+            resolve: {techData: Tech => Tech.getTechDataForState()}
         })
         .state('learningPath', {
             url: '/learningPath',
-            templateUrl: 'html/states/learningPath.html'
+            templateUrl: 'html/states/learningPath.html',
+            resolve: {techData: Tech => Tech.getTechDataForState()}
         })
         .state('crawler', {
             url: '/crawler',
